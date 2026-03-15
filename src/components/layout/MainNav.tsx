@@ -140,9 +140,7 @@ export function MainNav() {
               })}
             </div>
 
-            <div
-              className="my-2 h-px bg-gradient-to-r from-transparent via-rose-200 to-transparent"
-            />
+            <div className="my-2 h-px bg-gradient-to-r from-transparent via-rose-200 to-transparent" />
 
             <div className="flex flex-col gap-1.5">
               <Button
@@ -151,7 +149,7 @@ export function MainNav() {
                 variant="secondary"
                 className="w-full justify-start"
               >
-                Экспорт данных
+                Скачать данные
               </Button>
               <Button
                 onClick={() => fileInputRef.current?.click()}
@@ -159,7 +157,7 @@ export function MainNav() {
                 variant="secondary"
                 className="w-full justify-start"
               >
-                Импорт данных
+                Загрузить данные
               </Button>
               <input
                 ref={fileInputRef}
