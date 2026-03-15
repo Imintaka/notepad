@@ -52,24 +52,21 @@ export function loadAppState(): AppState {
       return defaultState;
     }
 
-    const parsed = JSON.parse(raw) as Partial<AppState> & { workDaysByMonth?: unknown };
+    const parsed = JSON.parse(raw) as Partial<AppState>;
     if (parsed.version !== 1) {
       return defaultState;
     }
 
-    const restParsed: Partial<AppState> = { ...parsed };
-    delete (restParsed as { workDaysByMonth?: unknown }).workDaysByMonth;
-
     const mergedState: AppState = {
       ...defaultState,
-      ...restParsed,
+      ...parsed,
       goals: {
         ...defaultState.goals,
-        ...(restParsed.goals ?? {}),
+        ...(parsed.goals ?? {}),
       },
       streaks: {
         ...defaultState.streaks,
-        ...(restParsed.streaks ?? {}),
+        ...(parsed.streaks ?? {}),
       },
     };
 
