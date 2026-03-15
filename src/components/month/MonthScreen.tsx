@@ -13,7 +13,7 @@ import { loadAppState, saveAppState } from "@/lib/storage";
 import { getStickerById, getStickerByTrackers } from "@/lib/stickers";
 import type { AppState, DayMetrics, MonthTrackerColor } from "@/types/app.types";
 
-const WEEKDAY_SHORT = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
+const WEEKDAY_SHORT = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
 
 const TRACKER_COLOR_STYLES: Record<
   MonthTrackerColor,
@@ -89,7 +89,7 @@ function shiftMonth(monthDate: Date, offset: number): Date {
 
 function createMonthGrid(monthDate: Date): Array<string | null> {
   const monthStart = getMonthStart(monthDate);
-  const leadingEmpty = monthStart.getDay();
+  const leadingEmpty = (monthStart.getDay() + 6) % 7;
   const dateKeys = getDateKeysOfMonth(monthDate);
   const cells = [...Array<string | null>(leadingEmpty).fill(null), ...dateKeys];
   const trailingEmpty = (7 - (cells.length % 7)) % 7;
